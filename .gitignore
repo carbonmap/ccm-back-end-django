@@ -81,6 +81,9 @@ target/
 profile_default/
 ipython_config.py
 
+# IDEs
+.idea/
+
 # pyenv
 .python-version
 
@@ -109,6 +112,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+djenv/
 
 # Spyder project settings
 .spyderproject
