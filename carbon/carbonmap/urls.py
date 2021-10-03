@@ -8,9 +8,13 @@
 # ]
 
 from django.urls import path
-from .views import current_user, UserList
+from django.conf.urls import url
+from .views import current_user, UserList, RegisterView
+from . import views
 
 urlpatterns = [
     path('current_user/', current_user),
-    path('users/', UserList.as_view())
+    path('users/', UserList.as_view()),
+
+
 ]
