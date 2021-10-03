@@ -13,9 +13,16 @@ to activate:
 
             source myenvname/bin/activate
 
+Switch to the project directory:
+
+                    cd carbon/
+
+
 Then install the dependencies:
 
             (myenvname)$ pip install -r requirements.txt
+
+
 
 Perform database migration:
 
