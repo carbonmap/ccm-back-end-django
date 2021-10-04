@@ -11,24 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('username',)
 
-# class RegisterSerializer(serializers.ModelSerializer):
-#     email = serializers.EmailField(
-#         required=True,
-#         validators=[UniqueValidator(queryset=User.objects.all())]
-#     )
-#     username = serializers.CharField(
-#         validators=[UniqueValidator(queryset=User.objects.all())]
-#     )
-#     password = serializers.CharField(min_length=8, write_only=True)
-#
-#     def create(self, validated_data):
-#         user = User.objects.create(validated_data['username'], validated_data['email'],
-#                                         validated_data['password'])
-#         return user
-#
-#     class Meta:
-#         model = User
-#         fields = ('id', 'username', 'email', 'password')
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -41,11 +23,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'password', 'password2', 'email', 'first_name', 'last_name')
-        extra_kwargs = {
-            'first_name': {'required': True},
-            'last_name': {'required': True}
-        }
+        fields = ('email', 'password', 'password2' )
+
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
@@ -55,10 +34,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name']
+            email=validated_data['email']
         )
 
         user.set_password(validated_data['password'])
@@ -91,4 +67,5 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('token', 'username', 'password')
+        fields = ('token', 'email', 'password')
+

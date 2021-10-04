@@ -24,6 +24,4 @@ urlpatterns = [
     path('login/', obtain_jwt_token),
     path('carbonmap/', include('carbonmap.urls')),
     path('register/', RegisterView.as_view())
-    # url(r'^users/', include('carbonmap.urls'))
-
 ]
