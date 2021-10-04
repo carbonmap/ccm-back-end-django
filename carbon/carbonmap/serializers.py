@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username',)
+        fields = ('username', )
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -25,23 +25,25 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ('email', 'password', 'password2' )
 
-
     def validate(self, attrs):
+        print('VLIADATING')
         if attrs['password'] != attrs['password2']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
 
         return attrs
 
     def create(self, validated_data):
-        user = User.objects.create(
+        # validated_data.pop('password2')
+        # created_user = super().create(validated_data)
+        created_user = User.objects.create(
+            username=validated_data['email'],
             email=validated_data['email']
         )
+        #
+        created_user.set_password(validated_data['password'])
+        created_user.save()
 
-        user.set_password(validated_data['password'])
-        user.save()
-
-        return user
-
+        return created_user
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):
