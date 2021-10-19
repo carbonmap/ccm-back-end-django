@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import include, url
 from rest_framework_jwt.views import obtain_jwt_token
+from carbonmap.views import  RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('token-auth/', obtain_jwt_token),
-    path('carbonmap/', include('carbonmap.urls'))
+    path('login/', obtain_jwt_token),
+    path('carbonmap/', include('carbonmap.urls')),
+    path('register/', RegisterView.as_view())
 ]
