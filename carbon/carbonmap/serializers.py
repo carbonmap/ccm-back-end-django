@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from rest_framework.validators import UniqueValidator
+from django.core.validators import EmailValidator, ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 
@@ -9,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email')
+        fields = 'email'
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -17,6 +18,15 @@ class RegisterSerializer(serializers.ModelSerializer):
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
+
+    def validate_email(self, value):
+        """Validate that a username is email like."""
+        _validate_email = EmailValidator()
+        try:
+            _validate_email(value=['email'])
+        except ValidationError:
+            raise ValidationError('Enter a valid email address.')
+        return value
 
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True)
@@ -26,11 +36,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ('email', 'password', 'password2' )
 
     def validate(self, attrs):
-        print('VLIADATING')
+        print('VALIDATING')
         if attrs['password'] != attrs['password2']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
 
         return attrs
+
 
     def create(self, validated_data):
         # validated_data.pop('password2')
