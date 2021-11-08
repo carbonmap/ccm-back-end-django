@@ -136,7 +136,7 @@ dmypy.json
 .pyre/
 
 # Static files
-carbon/static
+carbonmap_project/static
 
 # Media files
-carbon/media
+carbonmap_project/media

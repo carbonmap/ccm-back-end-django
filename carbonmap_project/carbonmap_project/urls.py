@@ -1,4 +1,4 @@
-"""carbon URL Configuration
+"""carbonmap_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -20,5 +20,5 @@ from rest_framework_jwt.views import obtain_jwt_token
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token-auth/', obtain_jwt_token),
-    path('carbonmap/', include('carbonmap.urls'))
+    path('carbonmap/', include('apps.carbonmap.urls'))
 ]
