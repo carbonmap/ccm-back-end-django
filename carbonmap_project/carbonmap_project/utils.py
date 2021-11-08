@@ -1,4 +1,4 @@
-from carbonmap.serializers import UserSerializer
+from apps.carbonmap.serializers import UserSerializer
 
 
 def my_jwt_response_handler(token, user=None, request=None):
