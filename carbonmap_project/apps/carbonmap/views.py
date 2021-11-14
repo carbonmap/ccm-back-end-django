@@ -9,11 +9,12 @@
 
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from rest_framework import permissions, status
+from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
+from .serializers import UserSerializer, UserSerializerWithToken, ReportingEntitySerializer
+from .models import Reporting_entity
 
 
 @api_view(['GET'])
@@ -40,3 +41,7 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReportingEntityViewSet(viewsets.ModelViewSet):
+    queryset = Reporting_entity.objects.all().order_by('name')
+    serializer_class = ReportingEntitySerializer
