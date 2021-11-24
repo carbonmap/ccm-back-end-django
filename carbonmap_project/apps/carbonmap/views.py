@@ -43,5 +43,5 @@ class UserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ReportingEntityViewSet(viewsets.ModelViewSet):
-    queryset = Reporting_entity.objects.all().order_by('name')
+    queryset = Reporting_entity.objects.all().order_by('id')
     serializer_class = ReportingEntitySerializer
