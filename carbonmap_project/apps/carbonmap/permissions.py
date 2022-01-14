@@ -20,7 +20,4 @@ class UserEntityPermission(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        if obj.author == request.user:
-            return True
-
         return False
