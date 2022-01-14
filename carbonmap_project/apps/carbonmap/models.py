@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Reporting_entity(models.Model):
-    name = models.CharField(max_length=60)
-    id = models.CharField(max_length=60, primary_key=True)
+    name = models.CharField(max_length=255)
+    id = models.CharField(max_length=255, primary_key=True)
     def __unicode__(self):
         return self.name
 
@@ -18,3 +18,7 @@ class Reporting_entity_address(models.Model):
     def __unicode__(self):
         return self.street_address 
 
+class UserToEntity(models.Model):
+    user_id = models.CharField(max_length=255)
+    entity_id = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)

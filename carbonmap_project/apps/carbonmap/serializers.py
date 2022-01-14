@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
-from .models import Reporting_entity, Reporting_entity_address
+from .models import Reporting_entity, Reporting_entity_address, UserToEntity
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -45,3 +45,8 @@ class ReportingEntityAddressSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Reporting_entity_address
         fields = ('id','street_address', 'address_locality', 'address_region', 'postal_code', 'address_country')
+
+class UserToEntitySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UserToEntity
+        fields = ('user_id','entity_id')
