@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Reporting_entity, Reporting_entity_address, UserToEntity
+from .models import ReportingEntity, ReportingEntityAddress, UserToEntity
 
 # Register your models here.
-admin.site.register(Reporting_entity)
-admin.site.register(Reporting_entity_address)
+admin.site.register(ReportingEntity)
+admin.site.register(ReportingEntityAddress)
 admin.site.register(UserToEntity)

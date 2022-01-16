@@ -14,7 +14,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken, ReportingEntitySerializer, ReportingEntityAddressSerializer, UserToEntitySerializer
-from .models import Reporting_entity, Reporting_entity_address, UserToEntity
+from .models import ReportingEntity, ReportingEntityAddress, UserToEntity
 from .permissions import UserEntityPermission
 
 @api_view(['GET'])
@@ -43,18 +43,16 @@ class UserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ReportingEntityViewSet(viewsets.ModelViewSet):
-    queryset = Reporting_entity.objects.all().order_by('id')
+    permission_classes = [UserEntityPermission] # Custom permission class used
+    queryset = ReportingEntity.objects.all().order_by('id')
     serializer_class = ReportingEntitySerializer
 
 
 class ReportingEntityAddressViewSet(viewsets.ModelViewSet):
-    queryset = Reporting_entity_address.objects.all().order_by('id')
+    queryset = ReportingEntityAddress.objects.all().order_by('id')
     serializer_class = ReportingEntityAddressSerializer
 
 class MessageViewSet(viewsets.ModelViewSet):
-
-    permission_classes = [UserEntityPermission] # Custom permission class used
-
     queryset = UserToEntity.objects.all()
     serializer_class = UserToEntitySerializer
 
