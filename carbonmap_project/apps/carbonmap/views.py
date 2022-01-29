@@ -49,6 +49,7 @@ class ReportingEntityViewSet(viewsets.ModelViewSet):
 
 
 class ReportingEntityAddressViewSet(viewsets.ModelViewSet):
+    permission_classes = [UserEntityPermission]
     queryset = ReportingEntityAddress.objects.all().order_by('id')
     serializer_class = ReportingEntityAddressSerializer
 
