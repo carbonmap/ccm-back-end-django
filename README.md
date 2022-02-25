@@ -20,7 +20,7 @@ Switch to the project directory:
 
 Then install the dependencies:
 
-            (myenvname)$ pip install -r requirements.txt
+            (venv)$ pip install -r requirements.txt
 
 
 
