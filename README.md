@@ -8,14 +8,14 @@ The first thing to do is to clone the repository:
 
 To create a virtual environment python has a built-in package venv (note that python3 is required):
 
-            python -m venv myenvname
+            python -m venv venv
 to activate:
 
-            source myenvname/bin/activate
+            source venv/bin/activate
 
 Switch to the project directory:
 
-                    cd carbon/
+                    cd carbonmap_project/
 
 
 Then install the dependencies:
