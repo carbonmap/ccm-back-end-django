@@ -140,3 +140,6 @@ carbonmap_project/static
 
 # Media files
 carbonmap_project/media
+
+# Random other files
+.DS_store

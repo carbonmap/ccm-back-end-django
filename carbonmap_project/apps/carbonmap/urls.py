@@ -18,7 +18,6 @@ urlpatterns = [
     path('reporting_entity/', ReportingEntityViewSet.as_view({'get':'list', 'post':'create'})),
     path('reporting_entity/<str:pk>/', ReportingEntityViewSet.as_view(
         {'get':'retrieve', 'put':'update'})),
-    #path('reporting_entity/', ReportingEntityAddressViewSet.as_view({'get':'list', 'post':'create'})),
     path('reporting_entity/<str:pk>/address/', ReportingEntityAddressViewSet.as_view(
         {'get':'retrieve', 'put':'update'})),
 ]
