@@ -8,30 +8,28 @@ The first thing to do is to clone the repository:
 
 To create a virtual environment python has a built-in package venv (note that python3 is required):
 
-            python -m venv venv
+    python -m venv venv
+
 to activate:
 
-            source venv/bin/activate
+    source venv/bin/activate
 
 Switch to the project directory:
 
-                    cd carbonmap_project/
-
+    cd carbonmap_project/
 
 Then install the dependencies:
 
-            (venv)$ pip install -r requirements.txt
-
-
+    (venv)$ pip install -r requirements.txt
 
 Perform database migration:
 
-            python manage.py migrate
+    python manage.py migrate
 
 Note that you need to [create superuser](https://docs.djangoproject.com/en/3.2/ref/django-admin/#createsuperuser):
 
-            python manage.py createsuperuser
+    python manage.py createsuperuser
 
 Run your project locally.
 
-            python manage.py runserver
+    python manage.py runserver
