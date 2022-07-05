@@ -18,9 +18,13 @@ Switch to the project directory:
 
     cd carbonmap_project/
 
-Then install the dependencies:
+Then install the dependencies (note that mysql must be installed for this to complete):
 
-    (venv)$ pip install -r requirements.txt
+    pip install -r requirements.txt
+
+Copy the environment settings (you can use the default for local installation):
+
+    cp .env-sample .env
 
 Perform database migration:
 
