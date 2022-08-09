@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.carbonmap',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     # 'carbonmap.apps.CarbonmapConfig'
 ]
@@ -92,6 +93,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = env.str('CORS_ORIGIN_WHITELIST').split(',')
 
